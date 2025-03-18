@@ -1,5 +1,10 @@
 package ihmsimple.ctrl;
 
+import ihmsimple.views.View;
+import static ihmsimple.services.ServiceDevine.NOMBRE_INVALIDE;
+import java.awt.Color;
+import ihmsimple.services.ServiceDevine;
+
 /**
  * Classe représentant le contrôleur de l'application MVC "IhmSimple".
  * 
@@ -11,17 +16,17 @@ public class Controller {
     /**
      * Le nombre courrant de l'utilisateur.
      */
-    // VOTRE CODE ICI...
+    private int nombre;
 
     /**
      * Référence à la vue de l'application.
      */
-    // VOTRE CODE ICI...
+    private View refView;
 
     /**
      * Référence au serviceDevine de l'application.
      */
-    // VOTRE CODE ICI...
+    private ServiceDevine refServiceDevine;
 
     /**
      * Constructeur du contrôleur. Comme toujours, le travail N°1 consiste à
@@ -31,7 +36,9 @@ public class Controller {
      * nombre, utilisez NOMBRE_INVALIDE.
      */
     public Controller() {
-        // VOTRE CODE ICI...
+        this.nombre = nombre;
+        this.refView = refView;
+        this.refServiceDevine = refServiceDevine;
     }
 
     /**
@@ -39,15 +46,29 @@ public class Controller {
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
     public void actionDemarrerNouveauJeu() {
-        // VOTRE CODE ICI...
+        refServiceDevine.penserAUnNombre();
+        refView.afficherStatus("Devinez !", Color.YELLOW);
     }
 
     /**
      * Méthode permettant de deviner le nombre pensé par l'utilisateur.
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
-    public void actionDeviner() {
-        // VOTRE CODE ICI...
+    public void actionDeviner(int valeurProposee) {
+        if (nombre != NOMBRE_INVALIDE) {
+            refView.lireValeurProposee();
+            if (valeurProposee != NOMBRE_INVALIDE) {
+                if (valeurProposee < nombre) {
+                    refView.afficherStatus("Trop petit !", Color.RED);
+                } else if (valeurProposee > nombre) {
+                    refView.afficherStatus("Trop grand !", Color.RED);
+                } else {
+                    refView.afficherStatus("Trouvé !!!", Color.GREEN);
+                }
+            } else {
+                refView.afficherStatus("Entrez un nombre !", Color.YELLOW);
+            }
+        }
     }
 
     /**
@@ -55,7 +76,7 @@ public class Controller {
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
     public void start() {
-        // VOTRE CODE ICI...
+        refView.afficherStatus("Jeu terminé !", Color.LIGHT_GRAY);
     }
 
     /**
@@ -83,7 +104,7 @@ public class Controller {
      * @return la référence à la vue de l'application
      */
     public View getRefView() {
-        // VOTRE CODE ICI...
+        return refView;
     }
 
     /**
@@ -92,7 +113,7 @@ public class Controller {
      * @return la référence au serviceDevine de l'application
      */
     public ServiceDevine getRefServiceDevine() {
-        // VOTRE CODE ICI...
+        return refServiceDevine;
     }
 
 }
