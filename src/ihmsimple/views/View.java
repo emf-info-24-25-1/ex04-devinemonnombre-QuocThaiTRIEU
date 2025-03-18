@@ -1,9 +1,7 @@
 package ihmsimple.views;
 
 import ihmsimple.ctrl.Controller;
-
-import static ihmsimple.services.ServiceDevine.NOMBRE_INVALIDE;
-
+import ihmsimple.services.ServiceDevine;
 import java.awt.Color;
 
 /**
@@ -36,8 +34,19 @@ public class View extends javax.swing.JFrame {
     /**
      * Constructeur de l'ihm.
      */
-    public View() {
-        this.refCtrl = null;
+    public View(Controller refCtrl) {
+        this.refCtrl = refCtrl;
+    }
+
+    /**
+     * Affiche un nouveau status de l'application dans la couleur de fond souhaitée.
+     *
+     * @param texte           le nouveau texte de status
+     * @param backgroundColor la couleur de fond de ce nouveau status
+     */
+    public void afficherStatus( String texte, Color backgroundColor ) {
+        jLabelEtat.setText( texte );
+        jLabelEtat.setBackground( backgroundColor );
     }
 
     /**
@@ -58,7 +67,7 @@ public class View extends javax.swing.JFrame {
     public int lireValeurProposee() {
 
         String contenu = jTextFieldProposition.getText();
-        int valeur = NOMBRE_INVALIDE;
+        int valeur = ServiceDevine.NOMBRE_INVALIDE;
 
         try {
             valeur = Integer.valueOf( contenu );
@@ -70,14 +79,12 @@ public class View extends javax.swing.JFrame {
     }
 
     /**
-     * Affiche un nouveau status de l'application dans la couleur de fond souhaitée.
+     * Setter de la référence au contrôleur de l'application.
      *
-     * @param texte           le nouveau texte de status
-     * @param backgroundColor la couleur de fond de ce nouveau status
+     * @param refCtrl la nouvelle référence au contrôleur de l'application
      */
-    public void afficherStatus( String texte, Color backgroundColor ) {
-        jLabelEtat.setText( texte );
-        jLabelEtat.setBackground( backgroundColor );
+    public void setRefCtrl( Controller refCtrl ) {
+        this.refCtrl = refCtrl;
     }
 
     /**
@@ -85,17 +92,8 @@ public class View extends javax.swing.JFrame {
      *
      * @return la référence au contrôleur de l'application
      */
-    public Controller getRefCtrl() {
+    public Controller getRefCtrl(Controller refCtrl) {
         return refCtrl;
-    }
-
-    /**
-     * Setter de la référence au contrôleur de l'application.
-     *
-     * @param refCtrl la nouvelle référence au contrôleur de l'application
-     */
-    public void setRefCtrl( Controller refCtrl ) {
-        this.refCtrl = refCtrl;
     }
 
     /**
@@ -185,15 +183,6 @@ public class View extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Méthode événement appelée lors de la pression du bouton jButtonNouveauJeu.
-     *
-     * @param evt l'événement clic suite à la pression du bouton jButtonNouveauJeu
-     */
-    private void jButtonNouveauJeuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNouveauJeuActionPerformed
-        refCtrl.actionDemarrerNouveauJeu();
-    }//GEN-LAST:event_jButtonNouveauJeuActionPerformed
-
-    /**
      * Méthode événement appelée lors de la pression du bouton jButtonDeviner.
      *
      * @param evt l'événement clic suite à la pression du bouton jButtonDeviner
@@ -202,5 +191,13 @@ public class View extends javax.swing.JFrame {
         refCtrl.actionDeviner();
     }//GEN-LAST:event_jButtonDevinerActionPerformed
 
+    /**
+     * Méthode événement appelée lors de la pression du bouton jButtonNouveauJeu.
+     *
+     * @param evt l'événement clic suite à la pression du bouton jButtonNouveauJeu
+     */
+    private void jButtonNouveauJeuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNouveauJeuActionPerformed
+        refCtrl.actionDemarrerNouveauJeu();
+    }//GEN-LAST:event_jButtonNouveauJeuActionPerformed
 
 }
