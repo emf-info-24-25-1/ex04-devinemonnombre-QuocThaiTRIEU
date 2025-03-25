@@ -36,9 +36,9 @@ public class Controller {
      * nombre, utilisez NOMBRE_INVALIDE.
      */
     public Controller() {
-        this.nombre = nombre;
-        this.refView = refView;
-        this.refServiceDevine = refServiceDevine;
+        this.nombre = NOMBRE_INVALIDE;
+        this.refView = new View(null);
+        this.refServiceDevine = new ServiceDevine(null);
     }
 
     /**
@@ -46,7 +46,7 @@ public class Controller {
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
     public void actionDemarrerNouveauJeu() {
-        refServiceDevine.penserAUnNombre();
+        nombre = refServiceDevine.penserAUnNombre();
         refView.afficherStatus("Devinez !", Color.YELLOW);
     }
 
@@ -54,9 +54,9 @@ public class Controller {
      * Méthode permettant de deviner le nombre pensé par l'utilisateur.
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
-    public void actionDeviner(int valeurProposee) {
+    public void actionDeviner() {
         if (nombre != NOMBRE_INVALIDE) {
-            refView.lireValeurProposee();
+            int valeurProposee = refView.lireValeurProposee();
             if (valeurProposee != NOMBRE_INVALIDE) {
                 if (valeurProposee < nombre) {
                     refView.afficherStatus("Trop petit !", Color.RED);
@@ -85,7 +85,7 @@ public class Controller {
      * @param refView la nouvelle référence à la vue de l'application
      */
     public void setRefView(View refView) {
-        // VOTRE CODE ICI...
+        this.refView = refView;
     }
 
     /**
@@ -95,7 +95,7 @@ public class Controller {
      *                         l'application
      */
     public void setRefServiceDevine(ServiceDevine refServiceDevine) {
-        // VOTRE CODE ICI...
+        this.refServiceDevine = refServiceDevine;
     }
 
     /**

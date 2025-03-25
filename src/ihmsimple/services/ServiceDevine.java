@@ -49,8 +49,8 @@ public class ServiceDevine {
      * @return le nombre à deviner aléatoirement choisi
      */
     public int penserAUnNombre() {
-        int nombreAleatoire = (int) (Math.random() * (MAX_NOMBRE - MIN_NOMBRE) + 1) + MIN_NOMBRE;
-        return nombreAleatoire;
+        int nbAleatoire = (int) (Math.random() * (MAX_NOMBRE - MIN_NOMBRE) + 1) + MIN_NOMBRE;
+        return nbAleatoire;
     }
 
     /**
@@ -59,7 +59,7 @@ public class ServiceDevine {
      * @param refCtrl la référence au contrôleur de l'application
      */
     public void setRefCtrl(Controller refCtrl) {
-        // VOTRE CODE ICI...
+        this.refCtrl = refCtrl;
     }
 
     /**

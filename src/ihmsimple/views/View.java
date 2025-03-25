@@ -45,8 +45,10 @@ public class View extends javax.swing.JFrame {
      * @param backgroundColor la couleur de fond de ce nouveau status
      */
     public void afficherStatus( String texte, Color backgroundColor ) {
-        jLabelEtat.setText( texte );
-        jLabelEtat.setBackground( backgroundColor );
+        if (jLabelEtat != null) {
+            jLabelEtat.setText( texte );
+            jLabelEtat.setBackground( backgroundColor );
+        }
     }
 
     /**
