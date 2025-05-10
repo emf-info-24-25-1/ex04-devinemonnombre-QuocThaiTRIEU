@@ -15,9 +15,9 @@ public class IhmSimple {
      */
     public static void main(String[] args) {
         Controller refCtrl = new Controller();
-        ServiceDevine refServiceDevine = new ServiceDevine(refCtrl);
+        ServiceDevine refServiceDevine = new ServiceDevine();
         refCtrl.setRefServiceDevine(refServiceDevine);
-        View refView = new View(refCtrl);
+        View refView = new View();
         refCtrl.setRefView(refView);
         refView.setRefCtrl(refCtrl);
         refServiceDevine.setRefCtrl(refCtrl);

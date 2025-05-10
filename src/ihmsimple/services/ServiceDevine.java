@@ -38,8 +38,7 @@ public class ServiceDevine {
      * Pour la référence au contrôleur, vous devez à présent savoir quelle valeur
      * initiale donner.
      */
-    public ServiceDevine(Controller refCtrl) {
-        this.refCtrl = refCtrl;
+    public ServiceDevine() {
     }
 
     /**
@@ -58,8 +57,8 @@ public class ServiceDevine {
      * 
      * @param refCtrl la référence au contrôleur de l'application
      */
-    public void setRefCtrl(Controller refCtrl) {
-        this.refCtrl = refCtrl;
+    public void setRefCtrl(Controller ctrl) {
+        this.refCtrl = ctrl;
     }
 
     /**

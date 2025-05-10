@@ -34,8 +34,7 @@ public class View extends javax.swing.JFrame {
     /**
      * Constructeur de l'ihm.
      */
-    public View(Controller refCtrl) {
-        this.refCtrl = refCtrl;
+    public View() {
     }
 
     /**
@@ -44,10 +43,10 @@ public class View extends javax.swing.JFrame {
      * @param texte           le nouveau texte de status
      * @param backgroundColor la couleur de fond de ce nouveau status
      */
-    public void afficherStatus( String texte, Color backgroundColor ) {
+    public void afficherStatus(String texte, Color backgroundColor) {
         if (jLabelEtat != null) {
-            jLabelEtat.setText( texte );
-            jLabelEtat.setBackground( backgroundColor );
+            jLabelEtat.setText(texte);
+            jLabelEtat.setBackground(backgroundColor);
         }
     }
 
@@ -56,14 +55,16 @@ public class View extends javax.swing.JFrame {
      */
     public void ihmStart() {
         initComponents();
-        setLocationRelativeTo( null );
-        setVisible( true );
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
-     * Retourne la valeur entière correspondant à ce qui a été saisi par l'utilisateur dans le champ "proposition".
+     * Retourne la valeur entière correspondant à ce qui a été saisi par
+     * l'utilisateur dans le champ "proposition".
      *
-     * @return la valeur entière correspondante ou NOMBRE_INVALIDE si ce qui a été saisi par l'utilisateur n'est pas
+     * @return la valeur entière correspondante ou NOMBRE_INVALIDE si ce qui a été
+     *         saisi par l'utilisateur n'est pas
      *         convertible en un entier
      */
     public int lireValeurProposee() {
@@ -72,9 +73,8 @@ public class View extends javax.swing.JFrame {
         int valeur = ServiceDevine.NOMBRE_INVALIDE;
 
         try {
-            valeur = Integer.valueOf( contenu );
-        }
-        catch ( Exception e ) {
+            valeur = Integer.valueOf(contenu);
+        } catch (Exception e) {
         }
 
         return valeur;
@@ -85,7 +85,7 @@ public class View extends javax.swing.JFrame {
      *
      * @param refCtrl la nouvelle référence au contrôleur de l'application
      */
-    public void setRefCtrl( Controller refCtrl ) {
+    public void setRefCtrl(Controller refCtrl) {
         this.refCtrl = refCtrl;
     }
 
@@ -99,11 +99,13 @@ public class View extends javax.swing.JFrame {
     }
 
     /**
-     * ATTENTION : cette méthode est appelée afin d'initialiser les composants de la vue et ne doit pas être modifiée car
+     * ATTENTION : cette méthode est appelée afin d'initialiser les composants de la
+     * vue et ne doit pas être modifiée car
      * son contenu est automatiquement modifié et regénéré par l'éditeur.
      */
-    @SuppressWarnings( "unchecked" )
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jButtonNouveauJeu = new javax.swing.JButton();
@@ -145,41 +147,47 @@ public class View extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabelLogo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonNouveauJeu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonDeviner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelEtat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelProposition)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldProposition)))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabelLogo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButtonNouveauJeu, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButtonDeviner, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabelEtat, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabelProposition)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextFieldProposition)))
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButtonNouveauJeu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelProposition)
-                            .addComponent(jTextFieldProposition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDeviner)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelEtat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelLogo)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jButtonNouveauJeu)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabelProposition)
+                                                        .addComponent(jTextFieldProposition,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jButtonDeviner)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabelEtat, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabelLogo)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap()));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,17 +197,17 @@ public class View extends javax.swing.JFrame {
      *
      * @param evt l'événement clic suite à la pression du bouton jButtonDeviner
      */
-    private void jButtonDevinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDevinerActionPerformed
+    private void jButtonDevinerActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonDevinerActionPerformed
         refCtrl.actionDeviner();
-    }//GEN-LAST:event_jButtonDevinerActionPerformed
+    }// GEN-LAST:event_jButtonDevinerActionPerformed
 
     /**
      * Méthode événement appelée lors de la pression du bouton jButtonNouveauJeu.
      *
      * @param evt l'événement clic suite à la pression du bouton jButtonNouveauJeu
      */
-    private void jButtonNouveauJeuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNouveauJeuActionPerformed
+    private void jButtonNouveauJeuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonNouveauJeuActionPerformed
         refCtrl.actionDemarrerNouveauJeu();
-    }//GEN-LAST:event_jButtonNouveauJeuActionPerformed
+    }// GEN-LAST:event_jButtonNouveauJeuActionPerformed
 
 }

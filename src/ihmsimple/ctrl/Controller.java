@@ -1,9 +1,9 @@
 package ihmsimple.ctrl;
 
-import ihmsimple.views.View;
-import static ihmsimple.services.ServiceDevine.NOMBRE_INVALIDE;
-import java.awt.Color;
 import ihmsimple.services.ServiceDevine;
+import static ihmsimple.services.ServiceDevine.NOMBRE_INVALIDE;
+import ihmsimple.views.View;
+import java.awt.Color;
 
 /**
  * Classe représentant le contrôleur de l'application MVC "IhmSimple".
@@ -37,8 +37,8 @@ public class Controller {
      */
     public Controller() {
         this.nombre = NOMBRE_INVALIDE;
-        this.refView = new View(null);
-        this.refServiceDevine = new ServiceDevine(null);
+        this.refView = null;
+        this.refServiceDevine = null;
     }
 
     /**
@@ -55,19 +55,19 @@ public class Controller {
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
     public void actionDeviner() {
-        if (nombre != NOMBRE_INVALIDE) {
-            int valeurProposee = refView.lireValeurProposee();
-            if (valeurProposee != NOMBRE_INVALIDE) {
-                if (valeurProposee < nombre) {
-                    refView.afficherStatus("Trop petit !", Color.RED);
-                } else if (valeurProposee > nombre) {
-                    refView.afficherStatus("Trop grand !", Color.RED);
-                } else {
-                    refView.afficherStatus("Trouvé !!!", Color.GREEN);
-                }
-            } else {
-                refView.afficherStatus("Entrez un nombre !", Color.YELLOW);
-            }
+        if (nombre == ServiceDevine.NOMBRE_INVALIDE) {
+            refView.afficherStatus("Démarrez une partie avant de jouer !", Color.YELLOW);
+            return;
+        }
+        int valeurProposee = refView.lireValeurProposee();
+        if (valeurProposee == ServiceDevine.NOMBRE_INVALIDE) {
+            refView.afficherStatus("Entrez un nombre valide !", Color.YELLOW);
+        } else if (valeurProposee < nombre) {
+            refView.afficherStatus("Trop petit !", Color.RED);
+        } else if (valeurProposee > nombre) {
+            refView.afficherStatus("Trop grand !", Color.RED);
+        } else {
+            refView.afficherStatus("Trouvé !!!", Color.GREEN);
         }
     }
 
@@ -76,6 +76,7 @@ public class Controller {
      * Voir le diagramme de séquence pour l'implémentation de cette méthode.
      */
     public void start() {
+        refView.ihmStart();
         refView.afficherStatus("Jeu terminé !", Color.LIGHT_GRAY);
     }
 
@@ -84,8 +85,8 @@ public class Controller {
      * 
      * @param refView la nouvelle référence à la vue de l'application
      */
-    public void setRefView(View refView) {
-        this.refView = refView;
+    public void setRefView(View view) {
+        this.refView = view;
     }
 
     /**
@@ -94,8 +95,8 @@ public class Controller {
      * @param refServiceDevine la nouvelle référence au serviceDevine de
      *                         l'application
      */
-    public void setRefServiceDevine(ServiceDevine refServiceDevine) {
-        this.refServiceDevine = refServiceDevine;
+    public void setRefServiceDevine(ServiceDevine service) {
+        this.refServiceDevine = service;
     }
 
     /**
